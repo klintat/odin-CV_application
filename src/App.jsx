@@ -13,10 +13,10 @@ function App() {
   const [errors, setErrors] = useState({});
 
   const personalFormConfig = [
-    { name: "firstname", label: "First Name ", type: "text" },
-    { name: "lastname", label: "Last Name", type: "text" },
+    { name: "firstName", label: "First Name ", type: "text" },
+    { name: "lastName", label: "Last Name", type: "text" },
     { name: "email", label: "Email", type: "email" },
-    { name: "phonenumber", label: "Phone Number", type: "tel" },
+    { name: "phoneNumber", label: "Phone Number", type: "tel" },
     { name: "address", label: "Address", type: "text" },
   ]
 
@@ -27,7 +27,12 @@ function App() {
     { name: "dateEnd", label: "End Date", type: "date" },
   ];
  
-  
+  const workFormConfig = [
+    { name: "companyName", label: "Company Name", type: "text" },
+    { name: "jobTitle", label: "Job Title", type: "text" },
+    { name: "dateStart", label: "Start Date", type: "date" },
+    { name: "dateEnd", label: "End Date", type: "date" },
+  ];
 }
 
 export default App;

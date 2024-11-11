@@ -3,13 +3,27 @@ function InputField({ label, name, type, value, onChange, error }) {
     <div style={{ marginBottom: "10px" }}>
       <label>
         {label}:
-        <input
-          type={type}
-          name={name}
-          value={value}
-          onChange={onChange}
-          style={{ display: "block", marginTop: "5px" }}
-        />
+        {type === "textarea" ? (
+          <textarea
+            name={name}
+            value={value}
+            onChange={onChange}
+            style={{
+              display: "block",
+              marginTop: "5px",
+              width: "100%",
+              height: "80px",
+            }}
+          />
+        ) : (
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            style={{ display: "block", marginTop: "5px" }}
+          />
+        )}
       </label>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
