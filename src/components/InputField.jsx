@@ -2,6 +2,7 @@ const InputField = ({
   label,
   name,
   value,
+  className,
   onChange,
   type = "text",
   isTextArea = false,
@@ -12,12 +13,13 @@ const InputField = ({
       <textarea
         name={name}
         value={value}
+        className={className}
         onChange={onChange}
         rows="4"
         cols="50"
       />
     ) : (
-      <input type={type} name={name} value={value} onChange={onChange} />
+      <input type={type} name={name} className={className} value={value} onChange={onChange} />
     )}
   </div>
 );

@@ -28,9 +28,9 @@ const DisplayCV = ({ entries, onEditEntry, onDeleteEntry, fields, sectionTitle }
 
   return (
     <div>
-      <h3>{sectionTitle} Entries</h3>
+      <h3>{sectionTitle}</h3>
       {entries.length === 0 ? (
-        <p>No entries added yet.</p>
+        <p>No information provided.</p>
       ) : (
         <ul>
           {entries.map((entry, index) => (
@@ -52,10 +52,10 @@ const DisplayCV = ({ entries, onEditEntry, onDeleteEntry, fields, sectionTitle }
                   <button onClick={handleCancel}>Cancel</button>
                 </div>
               ) : (
-                <div>
+                <div className="entryContainer">
                   {Object.entries(entry).map(([key, value]) => (
                     <p key={key}>
-                      <strong>{key}:</strong> {value}
+                        {value} |
                     </p>
                   ))}
                   <button onClick={() => handleEditClick(index)}>Edit</button>

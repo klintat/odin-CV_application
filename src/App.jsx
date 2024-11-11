@@ -6,7 +6,7 @@ import {
   educationFields,
   workFields,
 } from "./components/formConfig";
-import './App.scss';
+import "./App.scss";
 
 const App = () => {
   const [personalInfo, setPersonalInfo] = useState([]);
@@ -37,55 +37,60 @@ const App = () => {
 
   return (
     <div>
-      <FormSection
-        sectionTitle="Personal Information"
-        fields={personalFields}
-        onAddEntry={handleAddPersonalInfo}
-      />
+      <h3 className="tittle">CV Application</h3>
+      <div id="appContainer">
+        <div id="InputFieldContainer">
+          <FormSection
+            sectionTitle="Personal Information"
+            fields={personalFields}
+            onAddEntry={handleAddPersonalInfo}
+          />
 
-      <FormSection
-        sectionTitle="Education"
-        fields={educationFields}
-        onAddEntry={handleAddEducation}
-      />
+          <FormSection
+            sectionTitle="Education"
+            fields={educationFields}
+            onAddEntry={handleAddEducation}
+          />
 
-      <FormSection
-        sectionTitle="Work Experience"
-        fields={workFields}
-        onAddEntry={handleAddWork}
-      />
-      <div id="entrieDisplay">
-        <DisplayCV
-          entries={personalInfo}
-          sectionTitle="Personal Information"
-          onEditEntry={(index, updatedEntry) =>
-            handleEditEntry(setPersonalInfo, index, updatedEntry)
-          }
-          onDeleteEntry={(index) => handleDeleteEntry(setPersonalInfo, index)}
-          fields={personalFields}
-        />
+          <FormSection
+            sectionTitle="Work Experience"
+            fields={workFields}
+            onAddEntry={handleAddWork}
+          />
+        </div>
+        <div id="entrieDisplayContainer">
+          <DisplayCV
+            entries={personalInfo}
+            sectionTitle="Personal Information"
+            onEditEntry={(index, updatedEntry) =>
+              handleEditEntry(setPersonalInfo, index, updatedEntry)
+            }
+            onDeleteEntry={(index) => handleDeleteEntry(setPersonalInfo, index)}
+            fields={personalFields}
+          />
 
-        <DisplayCV
-          entries={educationEntries}
-          sectionTitle="Education"
-          onEditEntry={(index, updatedEntry) =>
-            handleEditEntry(setEducationEntries, index, updatedEntry)
-          }
-          onDeleteEntry={(index) =>
-            handleDeleteEntry(setEducationEntries, index)
-          }
-          fields={educationFields}
-        />
+          <DisplayCV
+            entries={educationEntries}
+            sectionTitle="Education"
+            onEditEntry={(index, updatedEntry) =>
+              handleEditEntry(setEducationEntries, index, updatedEntry)
+            }
+            onDeleteEntry={(index) =>
+              handleDeleteEntry(setEducationEntries, index)
+            }
+            fields={educationFields}
+          />
 
-        <DisplayCV
-          entries={workEntries}
-          sectionTitle="Work Experience"
-          onEditEntry={(index, updatedEntry) =>
-            handleEditEntry(setWorkEntries, index, updatedEntry)
-          }
-          onDeleteEntry={(index) => handleDeleteEntry(setWorkEntries, index)}
-          fields={workFields}
-        />
+          <DisplayCV
+            entries={workEntries}
+            sectionTitle="Work Experience"
+            onEditEntry={(index, updatedEntry) =>
+              handleEditEntry(setWorkEntries, index, updatedEntry)
+            }
+            onDeleteEntry={(index) => handleDeleteEntry(setWorkEntries, index)}
+            fields={workFields}
+          />
+        </div>
       </div>
     </div>
   );
