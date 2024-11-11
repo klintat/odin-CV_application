@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function EducationForm() {
   const [currentEntry, setCurrentEntry] = useState({
-    id: '',
-    schoolName: '',
-    studyName: '',
-    dateStart: '',
-    dateEnd: '',
+    id: "",
+    schoolName: "",
+    studyName: "",
+    dateStart: "",
+    dateEnd: "",
   });
   const [educationData, setEducationData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -19,10 +19,10 @@ function EducationForm() {
       ...currentEntry,
       [name]: value,
     });
-    
+
     setErrors({
       ...errors,
-      [name]: '',
+      [name]: "",
     });
   };
 
@@ -30,24 +30,24 @@ function EducationForm() {
     const newErrors = {};
 
     if (!currentEntry.schoolName.trim()) {
-      newErrors.schoolName = 'School name is required';
+      newErrors.schoolName = "School name is required";
     }
     if (!currentEntry.studyName.trim()) {
-      newErrors.studyName = 'Study name is required';
+      newErrors.studyName = "Study name is required";
     }
     if (!currentEntry.dateStart.trim()) {
-      newErrors.dateStart = 'Start date is required';
+      newErrors.dateStart = "Start date is required";
     }
     if (!currentEntry.dateEnd.trim()) {
-      newErrors.dateEnd = 'End date is required';
+      newErrors.dateEnd = "End date is required";
     }
-    
+
     if (currentEntry.dateStart && currentEntry.dateEnd) {
       const startDate = new Date(currentEntry.dateStart);
       const endDate = new Date(currentEntry.dateEnd);
 
       if (endDate < startDate) {
-        newErrors.dateEnd = 'End date cannot be earlier than start date';
+        newErrors.dateEnd = "End date cannot be earlier than start date";
       }
     }
 
@@ -55,14 +55,15 @@ function EducationForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Add new entry or update existing entry
   const handleSaveEntry = () => {
     if (!validateInput()) {
       return;
     }
 
     if (currentEntry.id) {
-      const updatedData = educationData.some((entry) => entry.id === currentEntry.id)
+      const updatedData = educationData.some(
+        (entry) => entry.id === currentEntry.id
+      )
         ? educationData.map((entry) =>
             entry.id === currentEntry.id ? currentEntry : entry
           )
@@ -71,11 +72,11 @@ function EducationForm() {
       setEducationData(updatedData);
       setIsEditing(false);
       setCurrentEntry({
-        id: '',
-        schoolName: '',
-        studyName: '',
-        dateStart: '',
-        dateEnd: '',
+        id: "",
+        schoolName: "",
+        studyName: "",
+        dateStart: "",
+        dateEnd: "",
       });
     }
   };
@@ -83,10 +84,10 @@ function EducationForm() {
   const handleAddNewEntry = () => {
     setCurrentEntry({
       id: uuidv4(),
-      schoolName: '',
-      studyName: '',
-      dateStart: '',
-      dateEnd: '',
+      schoolName: "",
+      studyName: "",
+      dateStart: "",
+      dateEnd: "",
     });
     setIsEditing(true);
   };
@@ -101,16 +102,16 @@ function EducationForm() {
     if (isEmpty) {
       setIsEditing(false);
       setCurrentEntry({
-        id: '',
-        schoolName: '',
-        studyName: '',
-        dateStart: '',
-        dateEnd: '',
+        id: "",
+        schoolName: "",
+        studyName: "",
+        dateStart: "",
+        dateEnd: "",
       });
     } else {
-      alert('Cannot exit: Form has unsaved data. Please clear fields or save.');
+      alert("Cannot exit: Form has unsaved data. Please clear fields or save.");
     }
-    };
+  };
 
   const handleEditEntry = (id) => {
     const entryToEdit = educationData.find((entry) => entry.id === id);
@@ -130,7 +131,7 @@ function EducationForm() {
 
       {isEditing && (
         <div>
-          <h3>{currentEntry.id ? 'Edit Entry' : 'Add New Entry'}</h3>
+          <h3>{currentEntry.id ? "Edit Entry" : "Add New Entry"}</h3>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <label>School Name:</label>
@@ -140,7 +141,9 @@ function EducationForm() {
                 value={currentEntry.schoolName}
                 onChange={handleInputChange}
               />
-              {errors.schoolName && <p style={{ color: 'red' }}>{errors.schoolName}</p>}
+              {errors.schoolName && (
+                <p style={{ color: "red" }}>{errors.schoolName}</p>
+              )}
             </div>
 
             <div>
@@ -151,7 +154,9 @@ function EducationForm() {
                 value={currentEntry.studyName}
                 onChange={handleInputChange}
               />
-              {errors.studyName && <p style={{ color: 'red' }}>{errors.studyName}</p>}
+              {errors.studyName && (
+                <p style={{ color: "red" }}>{errors.studyName}</p>
+              )}
             </div>
 
             <div>
@@ -162,7 +167,9 @@ function EducationForm() {
                 value={currentEntry.dateStart}
                 onChange={handleInputChange}
               />
-              {errors.dateStart && <p style={{ color: 'red' }}>{errors.dateStart}</p>}
+              {errors.dateStart && (
+                <p style={{ color: "red" }}>{errors.dateStart}</p>
+              )}
             </div>
 
             <div>
@@ -173,7 +180,9 @@ function EducationForm() {
                 value={currentEntry.dateEnd}
                 onChange={handleInputChange}
               />
-              {errors.dateEnd && <p style={{ color: 'red' }}>{errors.dateEnd}</p>}
+              {errors.dateEnd && (
+                <p style={{ color: "red" }}>{errors.dateEnd}</p>
+              )}
             </div>
 
             <button type="button" onClick={handleSaveEntry}>
@@ -198,7 +207,9 @@ function EducationForm() {
                 <strong>End Date:</strong> {entry.dateEnd}
               </p>
               <button onClick={() => handleEditEntry(entry.id)}>Edit</button>
-              <button onClick={() => handleDeleteEntry(entry.id)}>Delete</button>
+              <button onClick={() => handleDeleteEntry(entry.id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
