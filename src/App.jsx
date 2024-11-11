@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import PersonalDetails from "./components/PersonalDetails.jsx";
 import EducationalExperience from "./components/EducationalExperience.jsx";
 import WorkExperience from "./components/WorkExperience.jsx";
