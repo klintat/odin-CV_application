@@ -1,33 +1,20 @@
-function InputField({ label, name, type, value, onChange, error }) {
+const InputField = ({ label, name, value, onChange, type = "text" }) => {
   return (
-    <div style={{ marginBottom: "10px" }}>
-      <label>
-        {label}:
-        {type === "textarea" ? (
-          <textarea
-            name={name}
-            value={value}
-            onChange={onChange}
-            style={{
-              display: "block",
-              marginTop: "5px",
-              width: "100%",
-              height: "80px",
-            }}
-          />
-        ) : (
-          <input
-            type={type}
-            name={name}
-            value={value}
-            onChange={onChange}
-            style={{ display: "block", marginTop: "5px" }}
-          />
-        )}
-      </label>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div>
+      <label>{label}:</label>
+      {type === "textarea" ? (
+        <textarea
+          name={name}
+          value={value}
+          onChange={onChange}
+          rows="4"
+          cols="50"
+        />
+      ) : (
+        <input type={type} name={name} value={value} onChange={onChange} />
+      )}
     </div>
   );
-}
+};
 
 export default InputField;
